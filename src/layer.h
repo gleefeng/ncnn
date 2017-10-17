@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <string>
 #include <vector>
+#include <algorithm>
 #include "mat.h"
 #include "paramdict.h"
 #include "platform.h"

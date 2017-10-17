@@ -20,7 +20,7 @@ cmake_minimum_required(VERSION 2.8.10)
 # set(CMAKE_BUILD_TYPE relwithdebinfo)
 set(CMAKE_BUILD_TYPE release)
 
-option(NCNN_OPENMP "openmp support" ON)
+option(NCNN_OPENMP "openmp support" OFF)
 option(NCNN_STDIO "load model from external file" ON)
 option(NCNN_STRING "plain and verbose string" ON)
 option(NCNN_OPENCV "minimal opencv structure emulation" OFF)
@@ -31,18 +31,18 @@ if(NCNN_OPENMP)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
 endif()
 
-add_definitions(-Wall -Wextra)
+#add_definitions(-Wall -Wextra)
 
-add_definitions(-fPIC)
-add_definitions(-Ofast)
+#add_definitions(-fPIC)
+#add_definitions(-Ofast)
 
-add_definitions(-ffast-math)
+#add_definitions(-ffast-math)
 # add_definitions(-march=native)
 
 # add_definitions(-flto)
 
-add_definitions(-fvisibility=hidden -fvisibility-inlines-hidden)
-
+#add_definitions(-fvisibility=hidden -fvisibility-inlines-hidden)
+add_definitions(-D_SCL_SECURE_NO_WARNINGS -D_CRT_SECURE_NO_DEPRECATE)
 if(ANDROID)
     # disable shared library on android
     set_property(GLOBAL PROPERTY TARGET_SUPPORTS_SHARED_LIBS FALSE)

@@ -155,7 +155,7 @@ int ConvolutionDepthWise::forward(const Mat& bottom_blob, Mat& top_blob) const
     const int channels_g = channels / group;
     const int num_output_g = num_output / group;
 
-    #pragma omp parallel for collapse(2)
+    #pragma omp parallel for 
     for (int g=0; g<group; g++)
     {
         for (int p=0; p<num_output_g; p++)
