@@ -603,7 +603,7 @@ int Net::forward_layer(int layer_index, std::vector<Mat>& blob_mats, bool lightm
 {
     const Layer* layer = layers[layer_index];
 
-//     fprintf(stderr, "forward_layer %d %s\n", layer_index, layer->name.c_str());
+     fprintf(stderr, "forward_layer %d %s\n", layer_index, layer->name.c_str());
 
     if (layer->one_blob_only)
     {
@@ -718,7 +718,7 @@ int Net::forward_layer(int layer_index, std::vector<Mat>& blob_mats, bool lightm
         }
     }
 
-//     fprintf(stderr, "forward_layer %d %s done\n", layer_index, layer->name.c_str());
+     fprintf(stderr, "forward_layer %d %s done\n", layer_index, layer->name.c_str());
 //     const Mat& blob = blob_mats[layer->tops[0]];
 //     fprintf(stderr, "[%-2d %-16s %-16s]  %d    blobs count = %-3d   size = %-3d x %-3d\n", layer_index, layer->type.c_str(), layer->name.c_str(), layer->tops[0], blob.c, blob.h, blob.w);
 
@@ -802,7 +802,27 @@ int Extractor::input(const char* blob_name, const Mat& in)
 
     return 0;
 }
+void save_blob_value(std::vector<Mat> &blob_mats)
+{
+	
+	for (int i = 0; i < blob_mats.size();i++)
+	{
+		char name[256] = { 0 };
+		sprintf(name, "C:\\Users\\user\\Desktop\\temp2\\%d.txt",i);
+		FILE *fp = fopen(name, "wb");
+		for (int j = 0; j < blob_mats[i].c; j++)
+		{
+			float *data = blob_mats[i].data + j*blob_mats[i].cstep;
+			for (int k = 0; k < blob_mats[i].w*blob_mats[i].h; k++)
+			{
+				fprintf(fp, "%0.5f\n", data[k]);
+			}
+		}
+		fclose(fp);
+	}
+	
 
+}
 int Extractor::extract(const char* blob_name, Mat& feat)
 {
     int blob_index = net->find_blob_index_by_name(blob_name);
@@ -839,7 +859,7 @@ int Extractor::extract(const char* blob_name, Mat& feat)
     }
 
     feat = blob_mats[blob_index];
-
+	//save_blob_value(blob_mats);
     return ret;
 }
 #endif // NCNN_STRING
