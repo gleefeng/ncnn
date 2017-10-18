@@ -38,3 +38,4 @@
 *.app
 /windows/squeezenet/Debug
 /windows/Debug
+/windows/ssdmobilenet/Debug

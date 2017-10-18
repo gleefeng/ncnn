@@ -14,6 +14,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "googlenet", "googlenet\goog
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "alexnet", "alexnet\alexnet.vcxproj", "{921EAA6F-1787-4E13-9B9A-B62FF30CB51B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ssdmobilenet", "ssdmobilenet\ssdmobilenet.vcxproj", "{0DCC9ABB-3FCE-41ED-936D-4604B76CA86C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -54,6 +56,14 @@ Global
 		{921EAA6F-1787-4E13-9B9A-B62FF30CB51B}.Release|x64.Build.0 = Release|x64
 		{921EAA6F-1787-4E13-9B9A-B62FF30CB51B}.Release|x86.ActiveCfg = Release|Win32
 		{921EAA6F-1787-4E13-9B9A-B62FF30CB51B}.Release|x86.Build.0 = Release|Win32
+		{0DCC9ABB-3FCE-41ED-936D-4604B76CA86C}.Debug|x64.ActiveCfg = Debug|x64
+		{0DCC9ABB-3FCE-41ED-936D-4604B76CA86C}.Debug|x64.Build.0 = Debug|x64
+		{0DCC9ABB-3FCE-41ED-936D-4604B76CA86C}.Debug|x86.ActiveCfg = Debug|Win32
+		{0DCC9ABB-3FCE-41ED-936D-4604B76CA86C}.Debug|x86.Build.0 = Debug|Win32
+		{0DCC9ABB-3FCE-41ED-936D-4604B76CA86C}.Release|x64.ActiveCfg = Release|x64
+		{0DCC9ABB-3FCE-41ED-936D-4604B76CA86C}.Release|x64.Build.0 = Release|x64
+		{0DCC9ABB-3FCE-41ED-936D-4604B76CA86C}.Release|x86.ActiveCfg = Release|Win32
+		{0DCC9ABB-3FCE-41ED-936D-4604B76CA86C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

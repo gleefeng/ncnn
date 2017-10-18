@@ -206,6 +206,7 @@ static bool read_proto_from_binary(const char* filepath, google::protobuf::Messa
 
 int main(int argc, char** argv)
 {
+#if 0
     if (!(argc == 3 || argc == 5 || argc == 6))
     {
         fprintf(stderr, "Usage: %s [caffeproto] [caffemodel] [ncnnproto] [ncnnbin] [quantizelevel]\n", argv[0]);
@@ -217,6 +218,19 @@ int main(int argc, char** argv)
     const char* ncnn_prototxt = argc >= 5 ? argv[3] : "ncnn.proto";
     const char* ncnn_modelbin = argc >= 5 ? argv[4] : "ncnn.bin";
     const char* quantize_param = argc == 6 ? argv[5] : "0";
+#else
+	//const char* caffeproto ="../../../windows/examples/googlenet/googlenet_deploy.prototxt";
+	//const char* caffemodel = "../../../windows/examples/googlenet/bvlc_googlenet_new.caffemodel";
+	//const char* caffeproto ="../../../windows/examples/alexnet/alexnet_new_deploy.prototxt";
+	//const char* caffemodel = "../../../windows/examples/alexnet/bvlc_alexnet_new.caffemodel";
+	const char* caffeproto = "../../../windows/examples/ssdmobilenet/MobileNetSSD_deploy.prototxt";
+	const char* caffemodel = "../../../windows/examples/ssdmobilenet/MobileNetSSD_deploy.caffemodel";
+	const char* ncnn_prototxt = "../../../windows/examples/ssdmobilenet/ssdmobilenet.proto";
+	const char* ncnn_modelbin = "../../../windows/examples/ssdmobilenet/ssdmobilenet.bin";
+	//const char* ncnn_prototxt = "ncnn.proto";
+	//const char* ncnn_modelbin = "ncnn.bin";
+	const char* quantize_param = "0";
+#endif
     int quantize_level = atoi(quantize_param);
 
     if (quantize_level != 0 && quantize_level != 256 && quantize_level != 65536) {
@@ -321,7 +335,7 @@ int main(int argc, char** argv)
     for (int i=0; i<layer_count; i++)
     {
         const caffe::LayerParameter& layer = proto.layer(i);
-
+		printf("%s\n", layer.type().c_str());
         // layer definition line, repeated
         // [type] [name] [bottom blob count] [top blob count] [bottom blobs] [top blobs] [layer specific params]
         if (layer.type() == "Convolution")
@@ -1052,6 +1066,6 @@ int main(int argc, char** argv)
 
     fclose(pp);
     fclose(bp);
-
+	system("pause");
     return 0;
 }
