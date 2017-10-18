@@ -269,6 +269,7 @@
     <ClInclude Include="..\..\src\net.h" />
     <ClInclude Include="..\..\src\opencv.h" />
     <ClInclude Include="..\..\src\paramdict.h" />
+    <ClInclude Include="..\..\src\platform.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\src\CMakeLists.txt" />

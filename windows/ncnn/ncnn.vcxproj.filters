@@ -389,6 +389,9 @@
     <ClInclude Include="..\..\src\layer\x86\sse_mathfun.h">
       <Filter>源文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\platform.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\src\CMakeLists.txt">
