@@ -729,9 +729,13 @@ Extractor::Extractor(const Net* _net, int blob_count) : net(_net)
 {
     blob_mats.resize(blob_count);
     lightmode = false;
+	fixedmode = false;
     num_threads = 0;
 }
-
+void Extractor::set_fixed_mode(bool enable)
+{
+	fixedmode = enable;
+}
 void Extractor::set_light_mode(bool enable)
 {
     lightmode = enable;

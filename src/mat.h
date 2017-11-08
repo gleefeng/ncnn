@@ -120,6 +120,7 @@ public:
     int dims;
     // pointer to the data
     float* data;
+	short* s16data;
 
     // pointer to the reference counter;
     // when points to user-allocated data, the pointer is NULL

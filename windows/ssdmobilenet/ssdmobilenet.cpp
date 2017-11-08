@@ -56,7 +56,7 @@ static int detect_mobilenet(cv::Mat& raw_img, float show_threshold)
     ncnn::Mat out;
 
     ncnn::Extractor ex = mobilenet.create_extractor();
-    ex.set_light_mode(true);
+    ex.set_light_mode(false);
     //ex.set_num_threads(4);
     ex.input("data", in);
     ex.extract("detection_out",out);
@@ -103,7 +103,7 @@ static int detect_mobilenet(cv::Mat& raw_img, float show_threshold)
 
 int main(int argc, char** argv)
 {
-    const char* imagepath = "../examples/images/dog.jpg";
+    const char* imagepath = "../examples/images/2.jpg";
 
     cv::Mat m = cv::imread(imagepath, CV_LOAD_IMAGE_COLOR);
     if (m.empty())

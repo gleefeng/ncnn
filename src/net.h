@@ -102,6 +102,7 @@ public:
     // intermediate blob will be recycled when enabled
     // disabled by default, but recommend to enable
     void set_light_mode(bool enable);
+	void set_fixed_mode(bool enable);
 
     // set thread count for this extractor
     // this will overwrite the global setting
@@ -135,6 +136,7 @@ private:
     std::vector<Mat> blob_mats;
     bool lightmode;
     int num_threads;
+	bool fixedmode;
 };
 
 } // namespace ncnn

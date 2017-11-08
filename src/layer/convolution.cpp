@@ -203,7 +203,37 @@ int Convolution::load_model(const unsigned char*& mem)
 
     return 0;
 }
-
+void saveParam(char *pathname,int num_output,int kernel_size,int dilation,int stride,int pad,int bias_term,int weight_data_size,
+	float* bias_data,float *weight_data)
+{
+	FILE *fp;
+	fp = fopen(pathname, "wb");
+	fwrite(&num_output, sizeof(int), 1, fp);
+	fwrite(&kernel_size, sizeof(int), 1, fp);
+	fwrite(&dilation, sizeof(int), 1, fp);
+	fwrite(&stride, sizeof(int), 1, fp);
+	fwrite(&pad, sizeof(int), 1, fp);
+	fwrite(&weight_data_size, sizeof(int), 1, fp);
+	fwrite(weight_data, sizeof(float), weight_data_size, fp);
+	fwrite(&bias_term, sizeof(int), 1, fp);
+	if(bias_term)
+		fwrite(bias_data, sizeof(float), num_output, fp);
+	fclose(fp);
+}
+void saveConv(char *pathname, const Mat& bottom_blob)
+{
+	FILE *fp = fopen(pathname, "wb");
+	fwrite(&bottom_blob.c, sizeof(int), 1, fp);
+	fwrite(&bottom_blob.w, sizeof(int), 1, fp);
+	fwrite(&bottom_blob.h, sizeof(int), 1, fp);
+	for (int q = 0; q < bottom_blob.c; q++)
+	{
+		const Mat m = bottom_blob.channel(q);
+		const float* sptr = m.data;
+		fwrite(sptr, sizeof(float), bottom_blob.w*bottom_blob.h, fp);
+	}
+	fclose(fp);
+}
 int Convolution::forward(const Mat& bottom_blob, Mat& top_blob) const
 {
     // convolv with NxN kernel
@@ -310,8 +340,14 @@ int Convolution::forward(const Mat& bottom_blob, Mat& top_blob) const
             outptr += outw;
         }
     }
-
-    return 0;
+#if 0
+	 saveParam("C:\\Users\\user\\Desktop\\conv\\conv_param.bin",
+		num_output, kernel_size, dilation, stride, pad, bias_term, weight_data_size,
+		bias_data.data, weight_data.data);
+	 saveConv("C:\\Users\\user\\Desktop\\conv\\conv_in.bin", bottom_blob);
+	 saveConv("C:\\Users\\user\\Desktop\\conv\\conv_out.bin", top_blob);
+#endif
+	return 0;
 }
 
 } // namespace ncnn
