@@ -271,12 +271,6 @@
     <ClInclude Include="..\..\src\paramdict.h" />
     <ClInclude Include="..\..\src\platform.h" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\..\src\CMakeLists.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\src\platform.h.in" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

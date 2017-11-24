@@ -91,7 +91,7 @@ int main(int argc, char** argv)
     //const char* imagepath = argv[1];
 	const char* imagepath = "../examples/images/dog.jpg";
 	std::vector<std::string> vecLabel;
-	std::string label_file = "../examples/squeezenet/synset_words.txt";
+	std::string label_file = "../examples/images/synset_words.txt";
 	read_label(vecLabel,label_file);
     cv::Mat m = cv::imread(imagepath, CV_LOAD_IMAGE_COLOR);
     if (m.empty())
